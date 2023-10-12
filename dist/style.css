@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.control-container {
+    display: flex;
+    flex-direction: column;
+}
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+}
+
+
+/* CHESSBOARD */
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
+}
+
+.chessboard > div {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000; /* Added border for better visibility */
+}
+
+.white {
+    background-color: #eee;
+}
+
+.black {
+    background-color: #575757;
+}
