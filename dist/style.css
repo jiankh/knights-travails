@@ -31,6 +31,24 @@ header {
     padding: 30px;
 }
 
+/* BUTTONs */
+
+.active-btn {
+    background-color: aqua;
+}
+
+
+/* CELLS CHANGE */
+.start-cell {
+    border: green solid 1px;
+    background-image: url('images/knight.png')
+}
+
+.target-cell {
+    border: red solid 1px;
+}
+
+
 
 /* CHESSBOARD */
 .chessboard {
