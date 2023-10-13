@@ -1,6 +1,7 @@
 import { drawBoard, clearBoard } from "./drawBoard"
 import { getPath } from "./getPath"
 import {updateDestination, updateSteps, deactivateButtons} from "./helperFunctions"
+import { drawPath } from "./drawPath"
 
 let activeButton
 let startCell =[0,0]
@@ -11,6 +12,7 @@ const chessboard = document.querySelector(".chessboard")
 const startButton = document.querySelector(".start-cell-btn")
 const endButton = document.querySelector(".end-cell-btn")
 const travailButton = document.querySelector(".travail-btn")
+const clearButton = document.querySelector(".clear-btn")
 
 startButton.addEventListener("click", (e) => {
     e.preventDefault()
@@ -65,20 +67,7 @@ travailButton.addEventListener("click", (e) => {
 
 })
 
-function drawPath(paths,startCell) {
-  let num = 2
-  paths.forEach((path) => {
-    const selectedCell = document.querySelector(`[data-position="${path}"]`) //need to use two different ticks ' "
-    selectedCell.classList.add("pathway")
-    selectedCell.textContent = num
-    num++
-  })
-  //taking the knight out of the first cell and putting "1" in it
-  const startingCell = document.querySelector(`[data-position="${startCell}"]`)
-  startingCell.textContent = 1
-  startingCell.classList.remove("knight-cell")
-  
-  const targetCellPosition = paths[ paths.length - 1 ] 
-  const targetCell = document.querySelector(`[data-position="${targetCellPosition}"]`)
-  targetCell.classList.add("knight-cell")
-}
+clearButton.addEventListener("click", (e) => {
+  e.preventDefault()
+  location.reload()
+})
