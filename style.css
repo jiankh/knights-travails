@@ -38,15 +38,7 @@ header {
 }
 
 
-/* CELLS CHANGE */
-.start-cell {
-    border: green solid 1px;
-    background-image: url('images/knight.png')
-}
 
-.target-cell {
-    border: red solid 1px;
-}
 
 
 
@@ -72,4 +64,16 @@ header {
 
 .black {
     background-color: #575757;
+}
+
+/* CELLS CHANGE */
+.start-cell {
+    background-image: url('images/knight.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px green solid !important;
+}
+
+.target-cell {
+    border: red solid 1px;
 }
