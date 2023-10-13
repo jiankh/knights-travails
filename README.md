@@ -35,7 +35,7 @@ chessboard.addEventListener("click", (event) => {
 
 
 <hr>
-<ul>>
+<ul>
 <li>
   The main function of the project was the Breadth First Traversal: the <em>getPath()</em> function. It the classic BFS but with an added argument of <em>steps=[]</em> which is initialized as a default as an empty array.
 </li>
@@ -44,7 +44,12 @@ chessboard.addEventListener("click", (event) => {
     The <em>visitedCells</em> array that keeps track of the visited cells to avoid going over the same cells again and infinite looping.
     I used Strings of the positions (ex. "2,4") instead of adding the Cell object because it might potentially not working since the Cell objects have the <em>steps</em> variable inside them which can be different steps but the same cell.
   </li>
-</ul
+  <li>
+     The line <em>"const neighborCell = new Cell(neighborRow,neighborCol,  [...steps, [neighborRow, neighborCol]])"</em>.
+     The spread operator was used to place the items inside the original steps into it, and then adding the new step that was just made.
+  </li>
+
+</ul>
 
 ```javascript
 
