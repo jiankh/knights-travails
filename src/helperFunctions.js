@@ -32,6 +32,34 @@ function isValid(row, col) {
     return row > 0 && row < 9 && col > 0 && col < 9;
 }
 
+function updateDestination(startCell,endCell) {
+    const destinationContainer = document.querySelector(".destination-container")
+    destinationContainer.innerHTML = `[${startCell}] → [${endCell}]`
+}
+
+function updateSteps(arr,startCell) {
+    const movesContainer = document.querySelector(".moves-list")
+    movesContainer.innerHTML ="" //clear the list first
+    const firstEl = document.createElement("li")
+    firstEl.textContent = `[${startCell}]`
+    movesContainer.appendChild(firstEl)
+  
+    arr.forEach((path) => {
+      const listEl = document.createElement("li")
+      listEl.textContent = `[${path}]`
+      movesContainer.appendChild(listEl)
+    })
+}
+
+function deactivateButtons(startBtnElement,endBtnElement) {
+    startBtnElement.classList.remove("active-btn")
+    endBtnElement.classList.remove("active-btn")
+}
+  
+
 
 export {getNeighbors,
-        isValid}
+        isValid,
+        updateDestination,
+        deactivateButtons,
+        updateSteps}

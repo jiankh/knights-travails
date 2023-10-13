@@ -1,22 +1,16 @@
 import { drawBoard, clearBoard } from "./drawBoard"
 import { getPath } from "./getPath"
-
-
-
-
+import {updateDestination, updateSteps, deactivateButtons} from "./helperFunctions"
 
 let activeButton
 let startCell =[0,0]
 let endCell = [0,0]
 drawBoard(startCell,endCell)
 
-const cells = document.querySelectorAll(".cell")
+const chessboard = document.querySelector(".chessboard")
 const startButton = document.querySelector(".start-cell-btn")
 const endButton = document.querySelector(".end-cell-btn")
 const travailButton = document.querySelector(".travail-btn")
-
-const chessboard = document.querySelector(".chessboard")
-
 
 startButton.addEventListener("click", (e) => {
     e.preventDefault()
@@ -57,16 +51,34 @@ chessboard.addEventListener("click", (event) => {
 
 travailButton.addEventListener("click", (e) => {
   e.preventDefault()
-  if (startCell == [0,0] || endCell == [0,0]) {return}
-  
+  deactivateButtons(startButton,endButton)
+  if (startCell[0] === 0 && startCell[1] === 0 || endCell[0] === 0 && endCell[1] === 0) {return}
+  //cant do startCell === [0,0] bc it compares memory not values
+
   const [startRow, startCol] = startCell
   const [targetRow, targetCol] = endCell
   const paths = getPath(startRow,startCol,targetRow,targetCol)
   console.log(paths)
+  updateDestination(startCell,endCell)
+  updateSteps(paths,startCell)
+  drawPath(paths,startCell)
+
 })
 
-
-//console.log(getPath(1,1,4,4))
-
-// const cell = document.querySelector('[data-position="4,4"]');
-// cell.innerHTML = `<img src="images/knight.png">`
+function drawPath(paths,startCell) {
+  let num = 2
+  paths.forEach((path) => {
+    const selectedCell = document.querySelector(`[data-position="${path}"]`) //need to use two different ticks ' "
+    selectedCell.classList.add("pathway")
+    selectedCell.textContent = num
+    num++
+  })
+  //taking the knight out of the first cell and putting "1" in it
+  const startingCell = document.querySelector(`[data-position="${startCell}"]`)
+  startingCell.textContent = 1
+  startingCell.classList.remove("knight-cell")
+  
+  const targetCellPosition = paths[ paths.length - 1 ] 
+  const targetCell = document.querySelector(`[data-position="${targetCellPosition}"]`)
+  targetCell.classList.add("knight-cell")
+}
