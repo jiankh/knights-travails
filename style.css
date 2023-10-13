@@ -24,22 +24,26 @@ header {
     display: flex;
     flex-direction: column;
 }
-.buttons-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 30px;
-}
 
 /* BUTTONs */
 
-.active-btn {
-    background-color: aqua;
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px;
 }
 
+.active-btn {
+    background-color: lightgray;
+    box-shadow: inset 1px 1px 1px black;
+}
 
-
-
+button {
+    background-color: white;
+    box-shadow: 1px 1px 1px black;
+    cursor: pointer;
+}
 
 
 /* CHESSBOARD */
@@ -68,12 +72,43 @@ header {
 
 /* CELLS CHANGE */
 .start-cell {
+    border: 3px rgb(0, 156, 0) solid !important;
+}
+.target-cell {
+    border: 3px red solid  !important;
+}
+
+.knight-cell {
     background-image: url('images/knight.png');
     background-repeat: no-repeat;
     background-position: center;
-    border: 2px green solid !important;
 }
 
-.target-cell {
-    border: red solid 1px;
+.cell {
+    color: red;
+    font-size: 1.2rem;
 }
+
+
+
+/* Moves Container */
+.moves-container {
+    text-align: center;
+}
+
+.moves-header {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.destination-container {
+    font-weight: 600;
+}
+
+.moves-list {
+    text-align: left;
+    padding-top: 10px;
+}
+.moves-list>li {
+    list-style-position: inside; 
+}
+
