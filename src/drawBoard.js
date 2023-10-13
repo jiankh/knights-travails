@@ -1,10 +1,13 @@
 
 const chessboard = document.getElementById("chessboard");
 function drawBoard(startCell, targetCell) {
-    console.log(startCell)
 
     const [rowStart, colStart] = startCell
     const [rowTarget, colTarget] = targetCell
+
+    console.log(startCell)
+    console.log(rowStart)
+    console.log(colStart)
 
     for (let row = 1; row < 9; row++) {
         for (let col = 1; col < 9; col++) {
@@ -14,7 +17,10 @@ function drawBoard(startCell, targetCell) {
             cell.classList.add("cell")
             chessboard.appendChild(cell);
 
-            if (rowStart === row &&  colStart===col) {
+            // console.log(`${rowStart} == ${row} and ${colStart} == ${col}`)
+            // console.log(`${startCell}, ${targetCell}`)
+
+            if (rowStart === col && colStart===(9-row)) { //i think i just mixed up row/col but this works.
                 cell.classList.add("start-cell")
             }
             if (rowTarget === row &&  colTarget===col) {

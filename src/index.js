@@ -3,9 +3,7 @@ import { getPath } from "./helperFunctions"
 
 
 
-// const cell = document.querySelector("[data-4-4]")
-// cell.innerHTML = `<img src="images/knight.png">`
-// console.log(getPath(1,1,8,8))
+
 
 let activeButton
 let startCell =[0,0]
@@ -35,14 +33,25 @@ endButton.addEventListener("click", (e) => {
 })
 
 chessboard.addEventListener("click", (event) => {
-    const clickedCell = event.target;
-    if (clickedCell.classList.contains("cell")) {
-        // Handle the click on the cell here
-        // You can use clickedCell to identify the specific cell that was clicked
-        // For example, you can access its data attributes or class names.
-        const dataPosition = clickedCell.getAttribute("data-position");
-        console.log("Clicked on cell with data-position: " + dataPosition);
+  const clickedCell = event.target;
+  if (clickedCell.classList.contains("cell")) {
+    // Handle the click on the cell here
+    // You can use clickedCell to identify the specific cell that was clicked
+    // For example, you can access its data attributes or class names.
+    // const dataPosition = clickedCell.getAttribute("data-position");
+    // console.log(dataPosition);
+    if (activeButton === "start") {
+      let stringdata = clickedCell.getAttribute("data-position");
+      startCell = stringdata.split(",").map(Number);
+      //inputString.split(",") splits the input string at the comma, resulting in an array of substrings ["2", "3"].
+      //.map(Number) converts each substring to a number, creating the final array [2, 3].
+    } else if (activeButton === "end") {
+      endCell = [clickedCell.getAttribute("data-position")];
     }
+    clearBoard();
+    drawBoard(startCell, endCell);
+    console.log(`start: ${startCell}, target: ${endCell}`);
+  }
 });
 
 // cells.forEach((cell) => {
@@ -56,3 +65,5 @@ chessboard.addEventListener("click", (event) => {
 //     })
 // })
 
+// const cell = document.querySelector('[data-position="4,4"]');
+// cell.innerHTML = `<img src="images/knight.png">`
