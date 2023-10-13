@@ -1,5 +1,5 @@
 import { drawBoard, clearBoard } from "./drawBoard"
-import { getPath } from "./helperFunctions"
+import { getPath } from "./getPath"
 
 
 
@@ -46,7 +46,8 @@ chessboard.addEventListener("click", (event) => {
       //inputString.split(",") splits the input string at the comma, resulting in an array of substrings ["2", "3"].
       //.map(Number) converts each substring to a number, creating the final array [2, 3].
     } else if (activeButton === "end") {
-      endCell = [clickedCell.getAttribute("data-position")];
+      let stringdata = clickedCell.getAttribute("data-position");
+      endCell = stringdata.split(",").map(Number);
     }
     clearBoard();
     drawBoard(startCell, endCell);
@@ -54,16 +55,18 @@ chessboard.addEventListener("click", (event) => {
   }
 });
 
-// cells.forEach((cell) => {
-//     cell.addEventListener("click", () => {
-//         if (activeButton === "start") {
-//             startCell = [cell.getAttribute("data-position")]
-//         } else if (activeButton === "end") {
-//             endCell = [cell.getAttribute("data-position")]
-//         }
-//         console.log(startCell)
-//     })
-// })
+travailButton.addEventListener("click", (e) => {
+  e.preventDefault()
+  if (startCell == [0,0] || endCell == [0,0]) {return}
+  
+  const [startRow, startCol] = startCell
+  const [targetRow, targetCol] = endCell
+  const paths = getPath(startRow,startCol,targetRow,targetCol)
+  console.log(paths)
+})
+
+
+//console.log(getPath(1,1,4,4))
 
 // const cell = document.querySelector('[data-position="4,4"]');
 // cell.innerHTML = `<img src="images/knight.png">`
